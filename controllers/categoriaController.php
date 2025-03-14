@@ -49,12 +49,10 @@ class categoriaController{
         if ($idCategoria !== null || $categoria === "todos") {
             try {
                 // Obtener el total de productos y los productos de la página actual
+                $productos_por_pagina = 2;
                 $paginacion = $this->productoModel->obtenerTotalProductos($idCategoria);
-                $productos = $this->productoModel->obtenerProductosConDetalles($idCategoria, $ordenSQL, 2, $paginas);
-
-                // Cargar la vista de la categoría
-                foreach ($productos as $producto) {
-                 echo $producto['nombre'] . " - " . $producto['precio'] . "<br>";}
+                $paginacion = ceil($paginacion / $productos_por_pagina);
+                $productos = $this->productoModel->obtenerProductosConDetalles($idCategoria, $ordenSQL, $productos_por_pagina, $paginas);
                 require_once 'views/categoria/categoria.php';
             } catch (Exception $e) {
                 // Manejar cualquier error en la consulta

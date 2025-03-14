@@ -9,7 +9,7 @@
             <div class="col-12 col-lg-3 col-md-6">
                 <div class="cardProducto">
                     <div class="image_container">
-                        <img class="imgProduct" src="<?= htmlspecialchars($producto['urlPortadaImg']) ?>" alt="Logo de la empresa">
+                        <img class="imgProduct" src="<?= htmlspecialchars($producto['urlPortadaImg']) ?>" alt="imagen producto">
                     </div>
                     <div class="title">
                         <span><?= htmlspecialchars($producto['nombre']) ?></span>

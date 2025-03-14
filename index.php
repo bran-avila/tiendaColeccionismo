@@ -96,7 +96,7 @@ $router->get('categoria/{categoria}/pagina/{pagina}', function($categoria,$pagin
     $categoriaControlador->showCategoria($categoria,$pagina);
 });
 
-$router->get('categoria/{categoria}/pagina/{pagina}/order/{order}', function($categoria,$pagina,$order) {
+$router->get('categoria/{categoria}/pagina/{pagina}/ordenar/{order}', function($categoria,$pagina,$order) {
    $categoriaControlador = new categoriaController();
     $categoriaControlador->showCategoria($categoria,$pagina,$order);
 });
