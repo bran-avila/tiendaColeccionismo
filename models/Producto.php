@@ -96,8 +96,11 @@ class Producto {
     }
 
 
-    public function obtenerProductosConDetalles($idCategoria = null, $orden = null, $limite = null) {
+    public function obtenerProductosConDetalles($idCategoria = null, $orden = null, $limite = 10, $pagina = 1) {
         try {
+            // Calcular el offset para la paginación
+            $offset = ($pagina - 1) * $limite;
+    
             $sql = "SELECT p.*, 
                            c.nombre AS categoria_nombre, 
                            e.estado AS estado_nombre, 
@@ -106,15 +109,15 @@ class Producto {
                     LEFT JOIN categorias c ON p.idCategoria = c.idCategoria
                     LEFT JOIN estadoproducto e ON p.idEstadoProducto = e.idEstadoProducto
                     LEFT JOIN marcas m ON p.idMarca = m.idMarca";
-    
+            
             // Si se proporciona un idCategoria, agregamos el filtro
             if ($idCategoria !== null) {
                 $sql .= " WHERE p.idCategoria = :idCategoria";
             }
     
             // Validar ORDER BY para evitar inyecciones SQL
-            $columnasPermitidas = ['p.nombre', 'p.precio', 'c.nombre', 'e.estado', 'm.marca']; // Lista de columnas permitidas
-            $ordenPermitido = ['ASC', 'DESC']; // Solo permitimos estos valores
+            $columnasPermitidas = ['p.nombre', 'p.precio', 'c.nombre', 'e.estado', 'm.marca'];
+            $ordenPermitido = ['ASC', 'DESC'];
     
             if ($orden !== null) {
                 $partesOrden = explode(' ', trim($orden));
@@ -125,21 +128,17 @@ class Producto {
                 }
             }
     
-            // Agregar LIMIT si se proporciona
-            if ($limite !== null) {
-                $sql .= " LIMIT :limite";
-            }
+            // Agregar paginación con LIMIT y OFFSET
+            $sql .= " LIMIT :limite OFFSET :offset";
     
             $stmt = $this->db->prepare($sql);
     
-            // Enlazamos los parámetros solo si es necesario
+            // Enlazar parámetros
             if ($idCategoria !== null) {
                 $stmt->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
             }
-            
-            if ($limite !== null) {
-                $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
-            }
+            $stmt->bindParam(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -179,6 +178,33 @@ class Producto {
         
     }
 
+
+    public function obtenerTotalProductos($idCategoria = null) {
+        try {
+            $sql = "SELECT COUNT(*) AS total 
+                    FROM productos p";
+            
+            // Si se proporciona un idCategoria, agregamos el filtro
+            if ($idCategoria !== null) {
+                $sql .= " WHERE p.idCategoria = :idCategoria";
+            }
+    
+            $stmt = $this->db->prepare($sql);
+    
+            // Enlazamos el parámetro si se proporciona una categoría
+            if ($idCategoria !== null) {
+                $stmt->bindParam(':idCategoria', $idCategoria, PDO::PARAM_INT);
+            }
+    
+            $stmt->execute();
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // Retornar el total de productos
+            return (int)$resultado['total'];
+        } catch (PDOException $e) {
+            return ["success" => false, "message" => $e->getMessage()];
+        }
+    }
 
 }
 ?>

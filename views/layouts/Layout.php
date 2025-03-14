@@ -6,7 +6,7 @@
     <title><?php echo $titulo ?? 'Mi Tienda'; ?></title>
 
     <!-- CSS Global -->
-    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="/MICHICOLECCION/assets/css/global.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <!--
@@ -21,7 +21,7 @@
     
     -->
     <?php if (!empty($css)): ?>
-        <link rel="stylesheet" href="assets/css/<?php echo $css; ?>">
+        <link rel="stylesheet" href="/MICHICOLECCION/assets/css/<?php echo $css; ?>">
     <?php endif; ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -48,11 +48,11 @@
         crossorigin="anonymous"></script>
 
     
-<script src="assets/js/global.js"></script>
+<script src="/MICHICOLECCION/assets/js/global.js"></script>
 
 <!-- JavaScript Específico de la Página -->
 <?php if (!empty($js)): ?>
-    <script src="assets/js/<?php echo $js; ?>"></script>
+    <script src="/MICHICOLECCION/assets/js/<?php echo $js; ?>"></script>
 <?php endif; ?>
 
 </body>

@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center  align-items-center flex-grow-1 " id="ContenedorLogo">
-                    <a class="navbar-brand" href="/MICHICOLECCION/"><img  src="assets/icon/logo.png" alt="Logo de la empresa"></a>
+                    <a class="navbar-brand" href="/MICHICOLECCION/"><img  src="/MICHICOLECCION/assets/icon/logo.png" alt="Logo de la empresa"></a>
                 </div>
                 <div class="d-flex  gap-3 flex-grow-1 justify-content-end" id="menuIconos">
                     <a class="nav-link "  href="#"><i class="fa-solid fa-cart-shopping fs-3" style="color:#fdc84b"></i></a>

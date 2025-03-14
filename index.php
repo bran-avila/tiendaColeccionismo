@@ -91,6 +91,16 @@ $router->get('cerrarsesion', function() {
     $sesion = new AuthController();
     $sesion->logout();
 });
+$router->get('categoria/{categoria}/pagina/{pagina}', function($categoria,$pagina) {
+   $categoriaControlador = new categoriaController();
+    $categoriaControlador->showCategoria($categoria,$pagina);
+});
+
+$router->get('categoria/{categoria}/pagina/{pagina}/order/{order}', function($categoria,$pagina,$order) {
+   $categoriaControlador = new categoriaController();
+    $categoriaControlador->showCategoria($categoria,$pagina,$order);
+});
+
 
 // Ruta 404 personalizada
 $router->setNotFound(function() {
