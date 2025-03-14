@@ -1,0 +1,173 @@
+.menuFlotante{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(0% at center);
+    transition: clip-path 0.6s ease-in-out;
+    visibility: hidden;
+}
+
+#formProducto, #formProductoEditar {
+    max-width: 500px;
+    width: 100%;
+    height: 500px;   
+}
+
+.active {
+    clip-path: circle(150% at center);
+    visibility: visible;
+}
+
+.closing {
+    clip-path: circle(0% at center);
+    transition: clip-path 0.6s ease-in-out;
+}
+
+.colorFomulario{
+    background: linear-gradient(to right, rgba(235,174,42,1) 0%, rgba(248,202,102,1) 100%);
+
+}
+
+/* Estilos para navegadores basados en WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo de la pista */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color del pulgar */
+    border-radius: 4px; /* Radio de borde del pulgar */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del pulgar al pasar el ratón */
+  }
+  
+  /* Estilos para Firefox */
+  /* Ten en cuenta que Firefox tiene menos opciones de personalización */
+  /* Puedes usar la propiedad scrollbar-width para cambiar el ancho */
+  /* y scrollbar-color para cambiar el color del pulgar y la pista */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #ffc107 #f1f1f1;
+  }
+
+  /*estilos de file imagen*/
+
+  .input-div {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ededea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 100px #ededea , inset 0px 0px 10px #ededea,0px 0px 5px rgb(255, 255, 255);
+    animation: flicker 2s linear infinite;
+    margin: auto;
+  }
+  
+  .icon {
+    color: #ededea;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: iconflicker 2s linear infinite;
+  }
+  
+  .input {
+    position: absolute;
+    opacity: 0;
+    width: 50%;
+    height: 50%;
+    cursor: pointer !important;
+    z-index: 8;
+  }
+  
+  @keyframes flicker {
+    0% {
+      border: 2px solid #ededea;
+      box-shadow: 0px 0px 100px #ededea , inset 0px 0px 10px #ededea,0px 0px 5px rgb(255, 255, 255);
+    }
+  
+    5% {
+      border: 0px solid #ededea00;
+      box-shadow: none;
+    }
+  
+    10% {
+      border: 2px solid #ededea;
+      box-shadow: 0px 0px 100px #ededea , inset 0px 0px 10px #ededea,0px 0px 5px rgb(255, 255, 255);
+    }
+  
+    25% {
+        border: 0px solid #ededea00;
+      box-shadow: none;
+    }
+  
+    30% {
+      border: 2px solid #ededea;
+      box-shadow: 0px 0px 100px #ededea , inset 0px 0px 10px #ededea,0px 0px 5px rgb(255, 255, 255);
+    }
+  
+    100% {
+      border: 2px solid #ededea;
+      box-shadow: 0px 0px 100px #ededea , inset 0px 0px 10px #ededea,0px 0px 5px rgb(255, 255, 255);
+    }
+  }
+  
+  @keyframes iconflicker {
+    0% {
+      opacity: 1;
+    }
+  
+    5% {
+      opacity: 0.2;
+    }
+  
+    10% {
+      opacity: 1;
+    }
+  
+    25% {
+      opacity: 0.2;
+    }
+  
+    30% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /*imagen file que sube*/
+
+  .imgFile{
+    display: none;
+    margin:auto;
+    width:50%;
+    height: 50%;
+    object-fit: fill;
+  }
+
+  .contenedorFileImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #urlEditar{
+    display: none;
+  }

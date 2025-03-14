@@ -1,0 +1,300 @@
+.input {
+    color: black;
+    font: 1em/1.5 Hind, sans-serif;
+  }
+  
+  #contenedorBuscador form, .input, .caret {
+    margin: auto;
+  }
+  
+  #contenedorBuscador form {
+    position: relative;
+    width: 100%;
+    max-width: 17em;
+  }
+  
+  .input, .caret {
+    display: block;
+    transition: all calc(1s * 0.5) linear;
+  }
+  
+  .input {
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.25em inset;
+    caret-color: #255ff4;
+    width: 4em;
+    height: 4em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .input:focus, .input:valid {
+    background: powderblue;
+    border-radius: 0.25em;
+    box-shadow: none;
+    padding: 0.75em 1em;
+    transition-duration: calc(1s * 0.25);
+    transition-delay: calc(1s * 0.25);
+    width: 100%;
+    height: 3em;
+  }
+  
+  .input:focus {
+    animation: showCaret 1s steps(1);
+    outline: transparent;
+  }
+  
+  .input:focus + .caret, .input:valid + .caret {
+    animation: handleToCaret 1s linear;
+    background: transparent;
+    width: 1px;
+    height: 1.5em;
+    transform: translate(0,-1em) rotate(-180deg) translate(7.5em,-0.25em);
+  }
+  
+  .input::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  .label {
+    color: #e3e4e8;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  
+  .caret {
+    background: black;
+    border-radius: 0 0 0.125em 0.125em;
+    margin-bottom: -0.6em;
+    width: 0.25em;
+    height: 2em;
+    transform: translate(0,-1.6em) rotate(-45deg) translate(0,1.75em);
+    transform-origin: 50% 0;
+  }
+  
+  /* Animations */
+  @keyframes showCaret {
+    from {
+      caret-color: transparent;
+    }
+  
+    to {
+      caret-color: #255ff4;
+    }
+  }
+  
+  @keyframes handleToCaret {
+    from {
+      background: currentColor;
+      width: 0.25em;
+      height: 1em;
+      transform: translate(0,-1em) rotate(-45deg) translate(0,0.875em);
+    }
+  
+    25% {
+      background: currentColor;
+      width: 0.25em;
+      height: 1em;
+      transform: translate(0,-1em) rotate(-180deg) translate(0,0.875em);
+    }
+  
+    50%, 62.5% {
+      background: #255ff4;
+      width: 1px;
+      height: 1.5em;
+      transform: translate(0,-1em) rotate(-180deg) translate(7.5em,2.5em);
+    }
+  
+    75%, 99% {
+      background: #255ff4;
+      width: 1px;
+      height: 1.5em;
+      transform: translate(0,-1em) rotate(-180deg) translate(7.5em,-0.25em);
+    }
+  
+    87.5% {
+      background: #255ff4;
+      width: 1px;
+      height: 1.5em;
+      transform: translate(0,-1em) rotate(-180deg) translate(7.5em,0.125em);
+    }
+  
+    to {
+      background: transparent;
+      width: 1px;
+      height: 1.5em;
+      transform: translate(0,-1em) rotate(-180deg) translate(7.5em,-0.25em);
+    }
+  }
+
+  #contenedorBuscador{
+    display: block;
+    min-height: 70vh;/*se pone min para que tenga una altura minima y si se expande no se desborda*/
+    margin-top: 25px;
+  }
+
+  .contenedorBuscador{
+    margin-top: 25px;
+  }
+
+
+  /*card producto*/
+
+.cardProducto {
+  --bg-card: #27272a;
+  --primary: #ffc107;
+  --primary-800: #373b3e;
+  --primary-shadow: #2e1065;
+  --light: #d9d9d9;
+  --zinc-800: #18181b;
+  --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  width: 14rem;
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  margin: auto;
+  margin-top: 10px;
+  height: 300px;
+  justify-content: space-around;
+  
+}
+
+.image_container {
+  overflow: hidden;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 5;
+
+  width: 100%;
+  height: 8rem;
+  background-color: var(--primary-800);
+
+  border-radius: 0.5rem;
+}
+
+.image_container .image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 3rem;
+  fill: var(--light);
+}
+
+.title {
+  overflow: clip;
+
+  width: 100%;
+
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--light);
+  text-transform: capitalize;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.size {
+  font-size: 0.75rem;
+  color: var(--light);
+}
+
+.list-size {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  margin-top: 0.25rem;
+}
+
+.list-size .item-list {
+  list-style: none;
+}
+
+.list-size .item-list-button {
+  cursor: pointer;
+
+  padding: 0.5rem;
+  background-color: var(--zinc-800);
+
+  font-size: 0.75rem;
+  color: var(--light);
+
+  border: 2px solid var(--zinc-800);
+  border-radius: 0.25rem;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.item-list-button:hover {
+  border: 2px solid var(--light);
+}
+.item-list-button:focus {
+  background-color: var(--primary);
+
+  border: 2px solid var(--primary-shadow);
+
+  box-shadow: inset 0px 1px 4px var(--primary-shadow);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--light);
+}
+
+.cart-button {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+
+  padding: 0.5rem;
+  width: 100%;
+  background-image: var(--bg-linear);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: black;
+  text-wrap: nowrap;
+
+  border: 2px solid hsla(262, 83%, 58%, 0.5);
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 0.25rem 1px var(--light);
+}
+
+.cart-button .cart-icon {
+  width: 1rem;
+}
+
+.imgProduct{
+  width:100%;
+  height:100%;  
+}
+@media (max-width: 770px) {
+  .cardProducto {
+          width: 17rem; 
+         }
+   .col-12{/*tenemos que quitar el padding al col de boostratp
+           porque cuando se hace pequeño la pantalla ocupa mucho espacio*/
+          padding:0;
+   }      
+}
