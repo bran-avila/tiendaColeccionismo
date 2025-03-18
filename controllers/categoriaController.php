@@ -49,7 +49,7 @@ class categoriaController{
         if ($idCategoria !== null || $categoria === "todos") {
             try {
                 // Obtener el total de productos y los productos de la página actual
-                $productos_por_pagina = 2;
+                $productos_por_pagina = 10;
                 $paginacion = $this->productoModel->obtenerTotalProductos($idCategoria);
                 $paginacion = ceil($paginacion / $productos_por_pagina);
                 $productos = $this->productoModel->obtenerProductosConDetalles($idCategoria, $ordenSQL, $productos_por_pagina, $paginas);

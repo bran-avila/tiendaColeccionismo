@@ -32,25 +32,25 @@ $router->get('buscar/{dato}', function($dato) {
 $router->get('productos', function() {
     Middleware::verificarAutenticacion();  
     Middleware::verificarRol('administrador'); 
-    $listaProducto = new ProductoController();
+    $listaProducto = new ProductoAdminController();
     $listaProducto->listarProductos();
 });
 
 
 $router->post('producto/add', function() {
-    $producto = new ProductoController();
+    $producto = new ProductoAdminController();
     $producto->agregarProducto();
 });
 
 $router->post('producto/eliminar', function() {
     $idProducto = $_POST['idProducto'];
-    $producto = new ProductoController();
+    $producto = new ProductoAdminController();
     $producto->eliminarProducto($idProducto);
 });
 
 $router->post('producto/editar', function() {
     $idProducto = $_POST['idProducto'];
-    $producto = new ProductoController();
+    $producto = new ProductoAdminController();
     $producto->editarProducto($idProducto);
 });
 

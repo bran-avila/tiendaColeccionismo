@@ -10,6 +10,13 @@ ob_start();
 <div class="container mt-4" id="contenedorCategoria">
     <div class="row align-items-center mb-4" >
         <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo ucfirst($categoria); ?></li>
+                </ol>
+            </nav>
+
             <h1 class="d-inline"><?php echo ucfirst($categoria); ?></h1>
         </div>
         <div class="col-md-4">
