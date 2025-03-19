@@ -102,6 +102,12 @@ $router->get('categoria/{categoria}/pagina/{pagina}/ordenar/{order}', function($
 });
 
 
+$router->get('producto/{producto}', function($producto) {
+    $productoControlle = new ProductoController();
+    $productoControlle->showProducto($producto);
+    
+ });
+
 // Ruta 404 personalizada
 $router->setNotFound(function() {
     header("HTTP/1.0 404 Not Found");

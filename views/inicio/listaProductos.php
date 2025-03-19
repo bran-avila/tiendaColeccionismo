@@ -37,7 +37,7 @@
                             stroke-linecap="round"
                             ></path>
                         </svg>
-                        <span>Comprar</span>
+                        <span><a href="/MICHICOLECCION/producto/<?php echo str_replace(" ", "-",$producto['nombre']);?>">Comprar</a></span>
                         </button>
                     </div>
                 </div>

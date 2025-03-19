@@ -152,7 +152,7 @@ class Producto {
 
 
         try {
-            $sql = "SELECT p.idProducto, p.nombre, p.precio, p.urlPortadaImg, 
+            $sql = "SELECT p.idProducto, p.nombre, p.precio, p.urlPortadaImg, p.descripcion, p.cantidad,
                            m.marca AS marca_nombre, e.estado AS estado_nombre, c.nombre AS categoria_nombre
                     FROM productos p
                     LEFT JOIN marcas m ON p.idMarca = m.idMarca

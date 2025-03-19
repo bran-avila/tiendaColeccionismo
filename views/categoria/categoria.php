@@ -41,7 +41,7 @@ ob_start();
                             <p class="card-text">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
                             <p class="card-text">Marca: <?php echo $producto['marca_nombre']; ?></p>
                             <p class="card-text">Estado: <?php echo $producto['estado_nombre']; ?></p>
-                            <a href="/producto/<?php echo $producto['idProducto']; ?>" class="btn btn-primary">Ver más</a>
+                            <a href="/MICHICOLECCION/producto/<?php echo str_replace(" ", "-",$producto['nombre']);?>" class="btn btn-primary">Ver más</a>
                         </div>
                     </div>
                 </div>
