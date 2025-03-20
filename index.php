@@ -108,6 +108,31 @@ $router->get('producto/{producto}', function($producto) {
     
  });
 
+ $router->Post('carrito/agregar', function() {
+    $carrito = new CarritoController();
+    $carrito->agregarAlCarrito();   
+    
+ });
+
+ $router->get('carrito', function() {
+    $carrito = new CarritoController();
+    $carrito->verCarrito();
+ 
+ });
+
+ $router->post('carrito/actualizar', function() {
+    $carrito = new CarritoController();
+    $carrito->actualizarCantidad();
+ 
+ });
+
+ $router->post('carrito/eliminar', function() {
+    $carrito = new CarritoController();
+    $carrito->eliminarDelCarrito();
+ 
+ });
+
+
 // Ruta 404 personalizada
 $router->setNotFound(function() {
     header("HTTP/1.0 404 Not Found");

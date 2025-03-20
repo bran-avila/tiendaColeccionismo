@@ -21,7 +21,7 @@
                     <a class="navbar-brand" href="/MICHICOLECCION/"><img  src="/MICHICOLECCION/assets/icon/logo.png" alt="Logo de la empresa"></a>
                 </div>
                 <div class="d-flex  gap-3 flex-grow-1 justify-content-end" id="menuIconos">
-                    <a class="nav-link "  href="#"><i class="fa-solid fa-cart-shopping fs-3" style="color:#fdc84b"></i></a>
+                    <a class="nav-link "  href="/MICHICOLECCION/carrito"><i class="fa-solid fa-cart-shopping fs-3" style="color:#fdc84b"></i></a>
                     <a class="nav-link" href="/MICHICOLECCION/login"><i class="fa-regular fa-user fs-3" style="color:#fdc84b" ></i></a>
                     <a class="nav-link" href="/MICHICOLECCION/buscador"><i class="fa-solid fa-magnifying-glass fs-3" style="color:#fdc84b" ></i></a>
                 </div>  

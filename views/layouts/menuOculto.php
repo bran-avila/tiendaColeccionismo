@@ -1,7 +1,7 @@
 <div class="menuOculto" id="menuOculto">
             <ul class="listaMenu">
             <li><a href="/MICHICOLECCION/">Inicio</a></li>
-            <li><a href="#">Carrito</a></li>
+            <li><a href="/MICHICOLECCION/carrito">Carrito</a></li>
             <li><a href="/MICHICOLECCION/login">Login</a></li>
             <li><a href="/MICHICOLECCION/buscador">Buscador</a></li>
                 <li id="categoriaM">Categorías</li>

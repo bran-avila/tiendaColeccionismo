@@ -21,29 +21,39 @@ ob_start();
 <div class="row">
     <div class="col-md-6">
         <div class="ContenedorImg">
-        <img src="/MICHICOLECCION/<?= htmlspecialchars($producto['urlPortadaImg']) ?>
+            <img src="/MICHICOLECCION/<?= htmlspecialchars($producto['urlPortadaImg']) ?>
             " class="card-img-top img-fluid" alt="<?php echo $producto['nombre']; ?>">
         </div>
     </div>
     <div class="col-md-6">
         <div class="card contenedorDatos">
             <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                    <p class="card-text fs-2">Descripción: <?php echo $producto['descripcion']; ?></p>
-                    <p class="card-text fs-2">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
-                    <p class="card-text fs-2">Marca: <?php echo $producto['marca_nombre']; ?></p>
-                    <p class="card-text fs-2">Estado: <?php echo $producto['estado_nombre']; ?></p>
-                    <div class="contenedorNumer">
-                        <p class="card-text fs-2">Cantidad:</p>
-                        <div class="number-control ">
-                            <div class="number-left"></div>
-                            <input type="number" id="cantidad" name="cantidad" min="1" class="number-quantity"
-                            max="<?php echo  number_format($producto['cantidad'], 2); ?>" step="1" value="1">
-                            <div class="number-right"></div>
+                    <form action="/MICHICOLECCION/carrito/agregar" method="post">
+                    
+                        <input type="hidden" id="id" name="id" value="<?php echo $producto['idProducto']; ?>">
+                        <input type="hidden" name="nombre" value="<?php echo $producto['nombre']; ?>">
+                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                        <input type="hidden" name="cantidad_disponible" value="<?php echo $producto['cantidad']; ?>">
+                        <input type="hidden" name="imagen" value="<?php echo $producto['urlPortadaImg']; ?>">                  
+                        
+                    
+                        <p class="card-text fs-2">Descripción: <?php echo $producto['descripcion']; ?></p>
+                        <p class="card-text fs-2">Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
+                        <p class="card-text fs-2">Marca: <?php echo $producto['marca_nombre']; ?></p>
+                        <p class="card-text fs-2">Estado: <?php echo $producto['estado_nombre']; ?></p>
+                        <div class="contenedorNumer">
+                            <p class="card-text fs-2">Cantidad:</p>
+                            <div class="number-control ">
+                                <div class="number-left"></div>
+                                <input type="number" id="cantidad" name="cantidad" min="1" class="number-quantity"
+                                max="<?php echo  number_format($producto['cantidad'], 2); ?>" step="1" value="1">
+                                <div class="number-right"></div>
+                            </div>
                         </div>
-                    </div>
-                    <button class="button">
-                        <div><span>Agregar al carrito </span></div>
-                    </button>
+                        <button class="button"  type="submit">
+                            <div><span>Agregar al carrito </span></div>
+                        </button>
+                    </form>
 
                     <!--
                     <a href="/MICHICOLECCION//carrito/<?php// echo $producto['idProducto']; ?>" class="btn btn-primary">agregar carrito</a>
