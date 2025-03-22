@@ -43,7 +43,7 @@ header nav div{
   cursor: pointer;
   width: 50px;
   height: 40px;
-  z-index: 15;
+  z-index: 1500;
 }
 
 .barM span {
@@ -104,7 +104,7 @@ input[type]:checked ~ span.middle {
   align-items: center;
   color: white;
   font-size: 24px;
-  z-index: 10;
+  z-index: 1000;
 }
 .activar{
   display: flex;

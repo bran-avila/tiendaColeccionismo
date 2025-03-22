@@ -218,3 +218,18 @@ function activarPaypal(){
   }).render('#paypal-button-container');
 }
 
+//calculo precio de envio
+
+const radiosEnvio = document.querySelectorAll("input[name='envio']");
+const totalElement = document.getElementById("Total");
+const envioElement = document.getElementById("Envio");
+const subtotal = document.getElementById("Subtotal");
+       
+radiosEnvio.forEach(radio => {
+    radio.addEventListener("change", function () {
+        let costoEnvio = parseFloat(this.dataset.cantidad); // Obtiene el costo del envío
+        let subtotalValor = parseFloat(subtotal.dataset.valor.replace(",", "")) || 0;// quitamos la coma si el numero tiene 1,118 porque parcefloat solo entiene 1118
+        envioElement.textContent = `${costoEnvio.toFixed(2)}`; // Muestra el costo de envío
+        totalElement.textContent = `${(subtotalValor+costoEnvio).toFixed(2)}`; // Actualiza el total
+    });
+});

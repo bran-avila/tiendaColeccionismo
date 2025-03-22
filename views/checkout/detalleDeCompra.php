@@ -31,7 +31,9 @@
                     </tbody>
                 </table>
                 <div class="text-end mt-3">
-                    <h4 class="fw-bold">Total: $<?= number_format($total, 2) ?></h4>
+                    <h5 class="fw-bold">Subtotal: $ <span id="Subtotal" data-valor="<?=number_format($total, 2)?>"><?= number_format($total, 2) ?></span></h5>
+                    <h5 class="fw-bold">Envío: $ <span id="Envio" data-valor="<?=number_format(0, 2)?>"><?= number_format(0, 2) ?></span></h5>
+                    <h4 class="fw-bold">Total: $ <span id="Total" data-valor="<?=number_format($total + 0, 2)?>"><?= number_format($total + 0, 2) ?></span></h4>
                 </div>
             </div>
         <?php else: ?>

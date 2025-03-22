@@ -13,14 +13,14 @@ $total = 0;
 <script src="https://www.paypal.com/sdk/js?client-id=AYmkW-I_J63Cz7gRXzAspoEJzI_Tl0otpRCK2fTPa2JaFOD-Y9G9s5vhTEwmFOPqqxDvytuROEiCJLNu&currency=USD"></script>
 <div class="container">
    <div class="row">
-      <div class="col-md-6 col-12  contenedorHijos">
-         <?php 
-         require_once __DIR__ . '/../checkout/formularioCheckout.php';              
-         ?>
-      </div>
       <div class="col-md-6 col-12 contenedorHijos">
          <?php 
          require_once __DIR__ . '/../checkout/detalleDeCompra.php';              
+         ?>
+      </div>
+      <div class="col-md-6 col-12  contenedorHijos">
+         <?php 
+         require_once __DIR__ . '/../checkout/formularioCheckout.php';              
          ?>
       </div>
    </div>

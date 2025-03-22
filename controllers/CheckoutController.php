@@ -22,7 +22,7 @@ class CheckoutController {
         }
         $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
         $totalCarrito = $this->totalCarrito();
-        $envioGratis = $totalCarrito >= 599;
+        $envioGratis = $totalCarrito >= 999;
         $idUsuario = $_SESSION['usuario_id']; 
         $direcciones = $this->checkoutModel->obtenerDirecciones($idUsuario);
         $metodosEnvio = $this->checkoutModel->obtenerMetodosEnvio();
