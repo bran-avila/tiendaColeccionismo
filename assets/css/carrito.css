@@ -38,3 +38,8 @@ size span {
   .carritoContenedor{
     min-height: 70vh;
   }
+
+  #btnPagar a{
+    text-decoration: none;
+    color:#000
+  }

@@ -72,7 +72,7 @@ ob_start();
                     <?php endforeach; ?>
                     
                     <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                        <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Pagar productos</button>
+                        <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" id="btnPagar"><a href="/MICHICOLECCION/checkout">Pagar productos</a></button>
                     </div>
 
                 <?php else: ?>

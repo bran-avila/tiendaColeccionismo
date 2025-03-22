@@ -69,7 +69,18 @@ $router->post('login', function() {
 
 
 $router->get('checkout', function() {
-    require 'views/checkout/checkout.php';
+    $checkout = new CheckoutController();
+    $checkout->showCheckout();
+});
+
+$router->post('checkout/orden', function() {
+    $checkout = new CheckoutController();
+    $checkout->ordenPagoPaypal();
+});
+
+$router->post('checkout/datos', function() {
+    $checkout = new CheckoutController();
+    $checkout->datosPedido();
 });
 
 $router->post('registrarse', function() {
