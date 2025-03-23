@@ -211,12 +211,60 @@ function activarPaypal(){
     },
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        alert('Pago completado por ' + details.payer.name.given_name);
-        console.log(details);  // Puedes procesar los detalles del pago aquí
+            const transaction = details.purchase_units[0].payments.captures[0];
+            // Datos de PayPal a enviar
+            const paypalData = {
+                paypal_order_id: details.id,
+                paypal_transaction_id: transaction.id,
+                payer_id: details.payer.payer_id,
+                payer_email: details.payer.email_address,
+                payer_name: `${details.payer.name.given_name} ${details.payer.name.surname}`,
+                amount: transaction.amount.value,
+                currency: transaction.amount.currency_code,
+                status: transaction.status,
+                payment_date: transaction.create_time,
+                method: details.payment_source ? details.payment_source.type : "PayPal"
+            };
+            console.log(paypalData);
+            alert("Pago completado. Procesando pedido...");
+            pedidoFinalizado(paypalData); // Llamar la función enviando los datos de PayP
+
+
       });
     }
   }).render('#paypal-button-container');
 }
+
+
+function pedidoFinalizado(paypalData = {}){
+
+  const formData = new FormData(fromCheckout);
+
+  // Agregar los datos de PayPal al FormData si existen
+  for (const key in paypalData) {
+    formData.append(key, paypalData[key]);
+    }
+
+
+  fetch("checkout/pedidoCompletado", { // Ajusta la ruta según tu backend
+    method: "POST",
+    body: formData
+})
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          console.log(data);
+          window.location.href = "pedido/"+data.idPedido;
+
+      } else {
+          alert("Error a registrar pedido: " + data.errors);
+          console.log(data);
+      }
+  })
+  .catch(error => console.error("Error:", error));
+
+}
+
 
 //calculo precio de envio
 
@@ -233,3 +281,37 @@ radiosEnvio.forEach(radio => {
         totalElement.textContent = `${(subtotalValor+costoEnvio).toFixed(2)}`; // Actualiza el total
     });
 });
+
+/*evento de select para las direcciones*/
+
+const direccionSelect = document.getElementById("idDireccionExistente");
+
+        direccionSelect.addEventListener("change", function () {
+            const selectedOption = direccionSelect.options[direccionSelect.selectedIndex];
+
+            // Si selecciona la opción "Ninguna dirección", limpiar los campos
+            if (selectedOption.value === "0") {
+                document.getElementById("pais").value = "";
+                document.getElementById("nombre").value = "";
+                document.getElementById("apellidos").value = "";
+                document.getElementById("calle").value = "";
+                document.getElementById("colonia").value = "";
+                document.getElementById("cp").value = "";
+                document.getElementById("ciudad").value = "";
+                document.getElementById("estado").value = "";
+                document.getElementById("telefono").value = "";
+                return;
+            }
+
+            // Llenar los campos con los datos seleccionados
+            document.getElementById("nombre").value = selectedOption.dataset.nombre;
+            document.getElementById("apellidos").value = selectedOption.dataset.apellidoP + " " + selectedOption.dataset.apellidoM;
+            document.getElementById("calle").value = selectedOption.dataset.calle + " " + selectedOption.dataset.numExterior + " " + selectedOption.dataset.numInterior;
+            document.getElementById("colonia").value = selectedOption.dataset.colonia;
+            document.getElementById("cp").value = selectedOption.dataset.cp;
+            document.getElementById("ciudad").value = selectedOption.dataset.ciudad;
+            document.getElementById("estado").value = selectedOption.dataset.estado;
+            document.getElementById("telefono").value = selectedOption.dataset.telefono;
+            document.getElementById("pais").value = "México"; // Puedes ajustar el país si lo tienes guardado en tus datos
+        });
+    

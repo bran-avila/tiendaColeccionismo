@@ -1,11 +1,15 @@
 <?php
 require_once 'core/Validator.php';
 require_once 'models/Checkout.php'; 
+require_once 'models/pedido.php'; 
+
 class CheckoutController {
     private $checkoutModel;
+    private $pedidoModel;
     
     public function __construct() {
         $this->checkoutModel = new CheckoutModel();
+        $this->pedidoModel = new Pedido();
     }
 
     public function showCheckout() {
@@ -45,47 +49,38 @@ class CheckoutController {
     }
 
     public function procesarCheckout() {
-
-        /*
+        session_start();
+        if (!isset($_SESSION['usuario_id'])) {
+            header("Location: /MICHICOLECCION/login");
+            echo json_encode(["success" => false, "message" => "Debes iniciar sesión para continuar."]);
+            exit;
+        }
+        if (!isset($_SESSION['carrito']) || count($_SESSION['carrito']) < 1) {
+            header("Location: /MICHICOLECCION/");
+            echo json_encode(["success" => false, "message" => "Debes agregar productos al carrito."]);
+            exit;
+        }
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            session_start();
-            if (!isset($_SESSION['idUsuario'])) {
+            
+            if (!isset($_SESSION['usuario_id'])) {
                 echo json_encode(["success" => false, "message" => "Debes iniciar sesión para continuar."]);
                 return;
             }
-
-            $idUsuario = $_SESSION['idUsuario'];
-            $idDireccion = $_POST['idDireccion'] ?? null;
-            $idMetodoEnvio = $_POST['idMetodoEnvio'] ?? null;
-            $idTipoPago = $_POST['idTipoPago'] ?? null;
-            
-            $datos = [
-                'idDireccion' => $idDireccion,
-                'idMetodoEnvio' => $idMetodoEnvio,
-                'idTipoPago' => $idTipoPago
-            ];
-
-            $rules = [
-                'idDireccion' => ['required', 'numeric'],
-                'idMetodoEnvio' => ['required', 'numeric'],
-                'idTipoPago' => ['required', 'numeric']
-            ];
-
-            $errors = Validator::validate($datos, $rules);
-            if (!empty($errors)) {
-                echo json_encode(["success" => false, "errors" => $errors]);
-                return;
+        
+            // Obtener todos los datos enviados por POST
+            $datos = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $resultado = $this->pedidoModel->registrarPedido($datos);
+            if($resultado['success']){
+                unset($_SESSION['carrito']);
             }
-
-            $resultado = $this->checkoutModel->crearPedido($idUsuario, $idDireccion, $idMetodoEnvio, $idTipoPago);
-            
             header('Content-Type: application/json');
             echo json_encode($resultado);
             return;
         } else {
             echo json_encode(["success" => false, "message" => "Método no permitido."]);
             return;
-        }*/
+        }
     }
 
     public function ordenPagoPaypal(){

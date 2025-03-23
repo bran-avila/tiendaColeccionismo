@@ -1,7 +1,7 @@
 <?php if (!empty($direcciones)) : ?>
-    <label for="idDireccion">Selecciona una dirección:</label>
-    <select name="idDireccion" id="idDireccion">
-        <option value="">Selecciona una dirección</option>
+    <label class="labelc" for="idDireccionExistente">Selecciona una dirección:</label>
+    <select class="form-control" name="idDireccionExistente" id="idDireccionExistente">
+        <option value="0" selected >Ninguna dirección</option>
         <?php foreach ($direcciones as $index => $direccion) : ?>
             <option value="<?= $direccion['idDireccion'] ?>"
                 data-nombre="<?= htmlspecialchars($direccion['nombre']) ?>"
@@ -19,19 +19,8 @@
             </option>
         <?php endforeach; ?>
     </select>
-
-    <!-- Campos de entrada donde se llenará la dirección seleccionada -->
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="text" id="apellidoP" placeholder="Apellido Paterno">
-    <input type="text" id="apellidoM" placeholder="Apellido Materno">
-    <input type="text" id="numExterior" placeholder="Número Exterior">
-    <input type="text" id="numInterior" placeholder="Número Interior">
-    <input type="text" id="calle" placeholder="Calle">
-    <input type="text" id="colonia" placeholder="Colonia">
-    <input type="text" id="cp" placeholder="Código Postal">
-    <input type="text" id="telefono" placeholder="Teléfono">
-    <input type="text" id="ciudad" placeholder="Ciudad">
-    <input type="text" id="estado" placeholder="Estado">
+    <input type="hidden" name="idDireccionNueva" id="idDireccionNueva" value="false">
 <?php else : ?>
     <p>No tienes direcciones guardadas. Agrega una nueva antes de continuar.</p>
+    <input type="hidden" name="idDireccionNueva" id="idDireccionNueva" value="true">
 <?php endif; ?>

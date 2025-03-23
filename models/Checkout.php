@@ -66,37 +66,5 @@ class CheckoutModel {
         }
     }
 
-    public function crearPedido($idUsuario, $idDireccion, $idMetodoEnvio, $idTipoPago) {
-        try {
-            $this->db->beginTransaction();
-            /*
-            $stmt = $this->db->prepare("SELECT SUM(precio * cantidad) AS total FROM detalleCarritos WHERE idCarrito = (SELECT idCarrito FROM carritos WHERE idEstadoCarrito = 1 AND idUsuario = ?)");
-            $stmt->execute([$idUsuario]);
-            $totalBruto = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
-
-            if ($totalBruto == 0) {
-                return ["success" => false, "message" => "El carrito está vacío."];
-            }*/
-
-            $stmt = $this->db->prepare("INSERT INTO pedidos (idUsuario, idDireccionesUsuario, idMetodoEnvio, idEstatusVenta, idTipoPago, totalBruto, totalNeto, fecha) VALUES (?, ?, ?, 1, ?, ?, ?, NOW())");
-            $totalNeto = $totalBruto; 
-            $stmt->execute([$idUsuario, $idDireccion, $idMetodoEnvio, $idTipoPago, $totalBruto, $totalNeto]);
-
-            $idPedido = $this->db->lastInsertId();
-            
-            $stmt = $this->db->prepare("INSERT INTO detalleEnvio (idPedido, precioGuia, numeroGuia, paqueteria) VALUES (?, 0, '', '')");
-            $stmt->execute([$idPedido]);
-
-            $stmt = $this->db->prepare("DELETE FROM detalleCarritos WHERE idCarrito = (SELECT idCarrito FROM carritos WHERE idEstadoCarrito = 1 AND idUsuario = ?)");
-            $stmt->execute([$idUsuario]);
-
-            $this->db->commit();
-
-            return ["success" => true, "message" => "Pedido realizado con éxito", "idPedido" => $idPedido];
-        } catch (PDOException $e) {
-            $this->db->rollBack();
-            return ["success" => false, "message" => $e->getMessage()];
-        }
-    }
 }
 ?>

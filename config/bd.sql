@@ -197,12 +197,12 @@ create table estatusVenta(
     idEstatusventa int primary key AUTO_INCREMENT,
     estado varchar (45)
 );
-
+/*borrar tabla estadoPago*/
 create table estadoPago(
     idEstadoPago int primary key AUTO_INCREMENT,
     estado varchar (45)
 );
-
+/*modificar tabla para obtener datos paypal*/
 create table tipoPagos(
     idTipoPago int primary key AUTO_INCREMENT,
     idEstadoPago int,

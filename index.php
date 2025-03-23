@@ -83,6 +83,15 @@ $router->post('checkout/datos', function() {
     $checkout->datosPedido();
 });
 
+$router->post('checkout/pedidoCompletado', function() {
+    $checkout = new CheckoutController();
+    $checkout->procesarCheckout();
+});
+
+$router->get('pedido/{dato}', function($dato) {
+    echo $dato;
+});
+
 $router->post('registrarse', function() {
     $registrarse = new AuthController();
     $registrarse->register();
