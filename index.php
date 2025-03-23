@@ -88,8 +88,9 @@ $router->post('checkout/pedidoCompletado', function() {
     $checkout->procesarCheckout();
 });
 
-$router->get('pedido/{dato}', function($dato) {
-    echo $dato;
+$router->get('pedido/{idpedido}', function($idpedido) {
+    $pedido = new PedidoController();
+    $pedido->showPedido($idpedido);
 });
 
 $router->post('registrarse', function() {

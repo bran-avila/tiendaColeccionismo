@@ -131,5 +131,53 @@ class Pedido {
             return ['success' => false, 'message' => $e->getMessage()];
         }
     }
+
+
+    public function obtenerPedidoPorId($idPedido) {
+        $stmt = $this->db->prepare("
+            SELECT p.idPedido, p.fecha, p.totalBruto, p.totalNeto, e.estado, m.tipoEnvio, t.payment_method, t.status, p.idUsuario,p.idDireccionesUsuario
+            FROM pedidos p
+            JOIN estatusventa e ON p.idEstatusVenta = e.idEstatusventa
+            JOIN metodoenvio m ON p.idMetodoEnvio = m.idMetodoEnvio
+            JOIN tipopagos t ON p.idTipoPago = t.idTipoPago
+            WHERE p.idPedido = ?
+        ");
+        $stmt->execute([$idPedido]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function obtenerDetallesPedido($idPedido) {
+        $stmt = $this->db->prepare("
+            SELECT dp.idProducto, pr.nombre, dp.cantidad, dp.precioUnitario, dp.subtotal
+            FROM detallepedido dp
+            JOIN productos pr ON dp.idProducto = pr.idProducto
+            WHERE dp.idPedido = ?
+        ");
+        $stmt->execute([$idPedido]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerUsuarioPorId($idUsuario) {
+        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE idUsuario = ?");
+        $stmt->execute([$idUsuario]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerDireccionPorUsuario($idDireccionesUsuario) {
+        $stmt = $this->db->prepare("SELECT idDireccion FROM direccionesusuarios WHERE idDireccionesUsuario = ?");
+        $stmt->execute([$idDireccionesUsuario]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($resultado) {
+            return $this->obtenerDireccionPorId($resultado['idDireccion']);
+        }
+        return null;
+    }
+
+    public function obtenerDireccionPorId($idDireccion) {
+        $stmt = $this->db->prepare("SELECT * FROM direcciones WHERE idDireccion = ?");
+        $stmt->execute([$idDireccion]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
 ?>
