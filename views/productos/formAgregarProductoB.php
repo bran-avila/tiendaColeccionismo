@@ -22,12 +22,11 @@
                             <label class="form-label">Marca</label>
                             <select class="form-select" name="idMarca" required>
                                 <option value="">Selecciona una marca</option>
-                                <option value="6">Sin Marca</option>
-                                <option value="1">Bandai</option>
-                                <option value="2">Xbox</option>
-                                <option value="3">PlayStation</option>
-                                <option value="4">Nintendo</option>
-                                <option value="5">Otros</option>
+                                <?php foreach ($marcas as $marca): ?>
+                                    <option value="<?php echo htmlspecialchars($marca['idMarca']); ?>">
+                                        <?php echo htmlspecialchars($marca['marca']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">Por favor, selecciona la marca.</div>
                         </div>

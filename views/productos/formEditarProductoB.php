@@ -36,11 +36,11 @@
                             <label class="form-label">Estado del Producto</label>
                             <select class="form-select" name="idEstadoProducto" required>
                                 <option value="">Selecciona un estado</option>
-                                <option value="1">Nuevo</option>
-                                <option value="2">Usado</option>
-                                <option value="3">Semi Nuevo</option>
-                                <option value="4">Maltratado</option>
-                                <option value="5">Restaurado</option>
+                                <?php foreach ($marcas as $marca): ?>
+                                    <option value="<?php echo htmlspecialchars($marca['idMarca']); ?>">
+                                        <?php echo htmlspecialchars($marca['marca']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">Por favor, selecciona el estado.</div>
                         </div>

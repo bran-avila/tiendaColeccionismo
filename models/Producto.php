@@ -112,7 +112,7 @@ class Producto {
             
             // Si se proporciona un idCategoria, agregamos el filtro
             if ($idCategoria !== null) {
-                $sql .= " WHERE p.idCategoria = :idCategoria";
+                $sql .= " WHERE p.idCategoria = :idCategoria AND p.cantidad > 0";
             }
     
             // Validar ORDER BY para evitar inyecciones SQL
@@ -158,7 +158,7 @@ class Producto {
                     LEFT JOIN marcas m ON p.idMarca = m.idMarca
                     LEFT JOIN estadoproducto e ON p.idEstadoProducto = e.idEstadoProducto
                     LEFT JOIN categorias c ON p.idCategoria = c.idCategoria
-                    WHERE p.nombre LIKE :query1 
+                    WHERE p.nombre LIKE :query1 AND p.cantidad > 0
                     LIMIT 10";
             
             $stmt = $this->db->prepare($sql);

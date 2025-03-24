@@ -205,6 +205,54 @@ $router->get('admin/categoria/api', function() {
 
 /*fin rutas crear categorias */
 
+/*rutas marca*/
+$router->get('admin/marca', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $marca = new MarcaAdminController();
+    $marca->showMarca();
+});
+
+$router->get('admin/marca/crear', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $marca = new MarcaAdminController();
+    $marca->create();
+});
+
+$router->post('admin/marca/crear', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $marca = new MarcaAdminController();
+    $marca->store();
+});
+
+$router->get('admin/marca/editar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador');
+    $marca = new MarcaAdminController();
+    $marca->edit($id);
+});
+
+$router->post('admin/marca/editar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $marca = new MarcaAdminController();
+    $marca->update($id);
+});
+
+$router->get('admin/marca/borrar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $marca = new MarcaAdminController();
+    $marca->delete($id);
+});
+
+$router->get('admin/marca/api', function() {
+    $marca = new MarcaAdminController();
+    $marca->apiIndex();
+});
+/*fin de ruta marca */
 
 // Ruta 404 personalizada
 $router->setNotFound(function() {

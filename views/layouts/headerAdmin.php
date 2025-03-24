@@ -33,7 +33,7 @@ $activeSection = isset($activeSection) ? $activeSection : '';
                 <div class='dashboard-nav-dropdown-menu'>
                     <a href="/MICHICOLECCION/admin" class="dashboard-nav-dropdown-item <?= $activeSection == 'productosh' ? 'active' : '' ?>">Productos</a>
                     <a href="/MICHICOLECCION/admin/categoria" class="dashboard-nav-dropdown-item <?= $activeSection == 'categoríash' ? 'active' : '' ?>">Categorías</a>
-                    <a href="#" class="dashboard-nav-dropdown-item <?= $activeSection == 'marcash' ? 'active' : '' ?>">Marcas</a>
+                    <a href="/MICHICOLECCION/admin/marca" class="dashboard-nav-dropdown-item <?= $activeSection == 'marcash' ? 'active' : '' ?>">Marcas</a>
                 </div>
             </div>
             <a href="#" class="dashboard-nav-item <?= $activeSection == 'configuracionh' ? 'active' : '' ?>">

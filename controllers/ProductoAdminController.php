@@ -2,19 +2,24 @@
 require_once 'models/Producto.php'; 
 require_once 'core/Validator.php';
 require_once 'models/categoriaAdmin.php'; 
+require_once 'models/marcaAdmin.php'; 
+
 class ProductoAdminController {
 
+    private $marcaModel;
     private $categoriaModel;
     private $productoModel;
 
     function __construct(){
         $this->categoriaModel = new Categoria(); 
         $this->productoModel = new Producto();
+        $this->marcaModel = new Marca(); 
     }
 
     public function listarProductos() {
         $productos = $this->productoModel->obtenerProductos();
         $categorias  = $this->categoriaModel->obtenerTodas();
+        $marcas = $this->marcaModel->obtenerTodas();
         require 'views/productos/productos.php';
     }
 
