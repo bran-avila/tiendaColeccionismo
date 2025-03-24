@@ -15,9 +15,9 @@
             </div>
             <div class="col-md-4">
                 <h5>Enlaces</h5>
-                <a href="#" class="text-white d-block">Inicio</a>
-                <a href="#" class="text-white d-block">Nosotros</a>
-                <a href="#" class="text-white d-block">Contacto</a>
+                <a href="/MICHICOLECCION/politicasPrivacidad" class="text-white d-block">Politicas privacidad</a>
+                <a href="/MICHICOLECCION/politicasEnvio" class="text-white d-block">Politicas Envio</a>
+                <a href="/MICHICOLECCION/SobreNosotros" class="text-white d-block">Sobre nosotros</a>
             </div>
         </div>
         <hr class="my-3">

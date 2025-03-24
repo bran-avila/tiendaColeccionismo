@@ -278,6 +278,16 @@ $router->get('admin/orden/{id}', function($id) {
     $pedido->showPedidoAdmin($id);
 });
 
+$router->get('politicasPrivacidad', function() {
+    require_once 'views/politicas/politicasPrivacidad.php';
+});
+$router->get('politicasEnvio', function() {
+    require_once 'views/politicas/politicasEnvio.php';
+});
+$router->get('SobreNosotros', function() {
+    require_once 'views/politicas/sobreNosotros.php';
+});
+
 
 // Ruta 404 personalizada
 $router->setNotFound(function() {
