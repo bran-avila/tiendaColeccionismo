@@ -9,9 +9,9 @@
             </div>
             <div class="col-md-4">
                 <h5>Redes Sociales</h5>
-                <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/" class="text-white me-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" class="text-white"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="col-md-4">
                 <h5>Enlaces</h5>

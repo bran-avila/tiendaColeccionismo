@@ -152,6 +152,60 @@ $router->get('producto/{producto}', function($producto) {
  });
 
 
+/*rutas de categorias*/
+
+$router->get('admin/categoria', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $categoria = new categoriaAdmincontroller();
+    $categoria->showCategoria();
+});
+
+
+$router->get('admin/categoria/crear', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $categoria = new categoriaAdmincontroller();
+    $categoria->create();
+});
+
+$router->post('admin/categoria/crear', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $categoria = new categoriaAdmincontroller();
+    $categoria->store();
+});
+
+$router->get('admin/categoria/editar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador');
+     
+    $categoria = new categoriaAdmincontroller();
+    $categoria->edit($id);
+});
+
+$router->post('admin/categoria/editar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $categoria = new categoriaAdmincontroller();
+    $categoria->update($id);
+});
+
+$router->get('admin/categoria/borrar/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $categoria = new categoriaAdmincontroller();
+    $categoria->delete($id);
+});
+
+$router->get('admin/categoria/api', function() {
+    $categoria = new categoriaAdmincontroller();
+    $categoria->apiIndex();
+});
+
+/*fin rutas crear categorias */
+
+
 // Ruta 404 personalizada
 $router->setNotFound(function() {
     header("HTTP/1.0 404 Not Found");

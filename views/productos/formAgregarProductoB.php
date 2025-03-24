@@ -49,13 +49,13 @@
                             <label class="form-label">Categoría</label>
                             <select class="form-select" name="idCategoria" required>
                                 <option value="">Selecciona una categoría</option>
-                                <option value="1">Videojuegos</option>
-                                <option value="2">Libros</option>
-                                <option value="3">Cartas</option>
-                                <option value="4">Figuras</option>
-                                <option value="5">Coleccionables</option>
-                                <option value="6">Discos</option>
-                                <option value="7">Heroclix</option>
+
+                                <?php foreach ($categorias as $categoria): ?>
+                                    <option value="<?php echo htmlspecialchars($categoria['idCategoria']); ?>">
+                                        <?php echo htmlspecialchars($categoria['nombre']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+
                             </select>
                             <div class="invalid-feedback">Por favor, selecciona la categoría.</div>
                         </div>

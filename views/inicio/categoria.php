@@ -5,17 +5,17 @@
     <div class="row categoria">
         <div class="col-sm-6 col-12">
             <div class="imgCategoria" id="imgvideogame">
-                <a  href="#"><img  src="public/img/inicio/videojuegos.jpg" alt="imagen categoria videojuego"></a>
+                <a  href="/MICHICOLECCION/categoria/Videojuegos/pagina/1"><img  src="public/img/inicio/videojuegos.jpg" alt="imagen categoria videojuego"></a>
                 <h2>Video juegos</h2>
             </div>
         </div>
         <div class="col-sm-6 col-12">
             <div class="col-sm-12 col-12 imgCategoria">
-                <a  href="#"><img  src="public/img/inicio/cartas.jpg" alt="imagen categoria cartas"></a>
+                <a  href="/MICHICOLECCION/categoria/Cartas/pagina/1"><img  src="public/img/inicio/cartas.jpg" alt="imagen categoria cartas"></a>
                 <h2>Cartas</h2>
             </div>
             <div class="col-sm-12 col-12 imgCategoria">
-                <a  href="#"><img  src="public/img/inicio/libros.jpg" alt="imagen categoria libros"></a>
+                <a  href="/MICHICOLECCION/categoria/Libros/pagina/1"><img  src="public/img/inicio/libros.jpg" alt="imagen categoria libros"></a>
                 <h2>Libros y comics</h2>
             </div>
         </div>

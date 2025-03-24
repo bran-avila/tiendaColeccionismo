@@ -1,16 +1,20 @@
 <?php
 require_once 'models/Producto.php'; 
 require_once 'core/Validator.php';
+require_once 'models/categoriaAdmin.php'; 
 class ProductoAdminController {
 
+    private $categoriaModel;
     private $productoModel;
-     
+
     function __construct(){
+        $this->categoriaModel = new Categoria(); 
         $this->productoModel = new Producto();
     }
 
     public function listarProductos() {
         $productos = $this->productoModel->obtenerProductos();
+        $categorias  = $this->categoriaModel->obtenerTodas();
         require 'views/productos/productos.php';
     }
 

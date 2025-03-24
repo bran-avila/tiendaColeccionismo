@@ -2,7 +2,7 @@
 $titulo = "Lista de Productos";
 $css = "productos.css"; 
 $js = "productos.js";
-
+$activeSection = 'productosh';//AQUI VA EL NOMBRE DEL LINK DEL HEADER al final con una h ver headerAdmin.php para entender
 ob_start(); 
 
 

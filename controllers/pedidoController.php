@@ -22,7 +22,7 @@ class PedidoController{
             $direccion = $this->pedidoModel->obtenerDireccionPorUsuario($pedido['idDireccionesUsuario']);
             require_once 'views/pedido/pedido.php';
         }catch(Exception $e){
-            header("Location: /MICHICOLECCION/j");
+            header("Location: /MICHICOLECCION/");
         }
 
     }

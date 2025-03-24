@@ -10,7 +10,7 @@
                     <a class="nav-link fs-3" href="/MICHICOLECCION/">Inicio</a>
                     <div class="dropdown">
                         <a class="nav-link fs-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">CategorÍas</a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
+                            <ul class="dropdown-menu dropdown-menu-dark" id="dropdownMenu">
                                 <li><a class="dropdown-item" href="#">Videojuegos</a></li>
                                 <li><a class="dropdown-item" href="#">Libros</a></li>
                                 <li><a class="dropdown-item" href="#">Cartas</a></li>
