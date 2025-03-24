@@ -203,6 +203,12 @@ class Pedido {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerTodos(){
+        $stmt = $this->db->query("SELECT p.*, u.nombre as nombreUsuario, u.correo, e.estado as estadoVenta FROM pedidos p 
+                                  JOIN usuarios u ON p.idUsuario = u.idUsuario 
+                                  JOIN estatusventa e ON p.idEstatusVenta = e.idEstatusventa");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   }
 
 }
 ?>

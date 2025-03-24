@@ -45,6 +45,12 @@ class UsuarioModel {
         $stmt->execute([$idUsuario]);
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
+
+
+    public function obtenerTodos(){
+        $stmt = $this->db->query("SELECT * FROM usuarios");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+   }
 }
 
 ?>

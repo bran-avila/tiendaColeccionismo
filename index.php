@@ -254,6 +254,31 @@ $router->get('admin/marca/api', function() {
 });
 /*fin de ruta marca */
 
+
+// Rutas para Clientes y Pedidos
+
+$router->get('admin/clientes', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $cliente = new ClienteAdminController();
+    $cliente->showClientes();
+});
+
+$router->get('admin/pedidos', function() {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $pedido = new pedidoController();
+    $pedido->showPedidos();
+});
+
+$router->get('admin/orden/{id}', function($id) {
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $pedido = new pedidoController();
+    $pedido->showPedidoAdmin($id);
+});
+
+
 // Ruta 404 personalizada
 $router->setNotFound(function() {
     header("HTTP/1.0 404 Not Found");

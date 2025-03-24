@@ -20,10 +20,10 @@ $activeSection = isset($activeSection) ? $activeSection : '';
             <a href="/MICHICOLECCION/" class="dashboard-nav-item <?= $activeSection == 'inicioh' ? 'active' : '' ?>">
                 <i class="fas fa-home"></i> Inicio
             </a>
-            <a href="#" class="dashboard-nav-item <?= $activeSection == 'pedidosh' ? 'active' : '' ?>">
+            <a href="/MICHICOLECCION/admin/pedidos" class="dashboard-nav-item <?= $activeSection == 'pedidosh' ? 'active' : '' ?>">
                 <i class="fas fa-shopping-cart"></i> Pedidos
             </a>
-            <a href="#" class="dashboard-nav-item <?= $activeSection == 'usuariosh' ? 'active' : '' ?>">
+            <a href="/MICHICOLECCION/admin/clientes" class="dashboard-nav-item <?= $activeSection == 'usuariosh' ? 'active' : '' ?>">
                 <i class="fas fa-users"></i> Usuarios
             </a>
             <div class='dashboard-nav-dropdown <?= in_array($activeSection, ['productosh', 'categoríash', 'marcash', 'estadoh']) ? 'show' : '' ?>'>
