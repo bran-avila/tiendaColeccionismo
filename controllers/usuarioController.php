@@ -1,10 +1,13 @@
 <?php
 require_once 'models/usuario.php';
+require_once 'models/pedido.php';
 class UsuarioController {
     private $usuarioModel;
+    private $pedidoModel;
 
     public function __construct() {
         $this->usuarioModel = new UsuarioModel();
+        $this->pedidoModel = new Pedido(); 
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -49,6 +52,16 @@ class UsuarioController {
         return  false;
        }
 
+    }
+
+    public function showUserPerfile(){
+
+        $usuarioId = $_SESSION['usuario_id'];
+        $usuario = $this->pedidoModel->obtenerUsuarioPorId($usuarioId);
+        $pedidos = $this->pedidoModel->obtenerPedidosPorUsuario($usuarioId);
+        $direcciones = $this->pedidoModel->obtenerDireccionesPorUsuario($usuarioId);
+        $usuario_roles = $_SESSION['usuario_roles'];
+        require_once "views/usuario/usuario.php";
     }
 }
 

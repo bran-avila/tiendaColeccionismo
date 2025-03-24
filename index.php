@@ -29,7 +29,7 @@ $router->get('buscar/{dato}', function($dato) {
     $buscar->buscar($dato);
 });
 
-$router->get('productos', function() {
+$router->get('admin', function() {
     Middleware::verificarAutenticacion();  
     Middleware::verificarRol('administrador'); 
     $listaProducto = new ProductoAdminController();
@@ -89,6 +89,7 @@ $router->post('checkout/pedidoCompletado', function() {
 });
 
 $router->get('pedido/{idpedido}', function($idpedido) {
+    //Middleware::verificarAutenticacion();
     $pedido = new PedidoController();
     $pedido->showPedido($idpedido);
 });
@@ -99,12 +100,9 @@ $router->post('registrarse', function() {
 });
 $router->get('usuario', function() {
     Middleware::verificarAutenticacion();  
-    Middleware::verificarRol('usuario'); 
-    echo"ID usuario:". $_SESSION['usuario_id'];
-    echo"<br>";
-    echo"nombre usuario:". $_SESSION['usuario_nombre'];
-    echo"<br>";
-    echo"Rol usuario:". $_SESSION['usuario_roles'][0];
+    Middleware::verificarRol('usuario');
+    $usuario = new UsuarioController(); 
+    $usuario->showUserPerfile();
 });
 
 $router->get('cerrarsesion', function() {

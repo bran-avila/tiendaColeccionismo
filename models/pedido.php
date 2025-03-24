@@ -143,6 +143,10 @@ class Pedido {
             WHERE p.idPedido = ?
         ");
         $stmt->execute([$idPedido]);
+
+        if (!$stmt) {
+            throw new Exception("Pedido no encontrado con el ID: $idPedido");
+        }
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     
@@ -178,6 +182,27 @@ class Pedido {
         $stmt->execute([$idDireccion]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+        // En Pedido.php (o el modelo que administre usuarios y pedidos)
+    public function obtenerPedidosPorUsuario($idUsuario) {
+        $stmt = $this->db->prepare("SELECT p.idPedido, p.fecha, p.totalNeto, e.estado 
+                                    FROM pedidos p 
+                                    JOIN estatusventa e ON p.idEstatusVenta = e.idEstatusventa 
+                                    WHERE p.idUsuario = ?");
+        $stmt->execute([$idUsuario]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerDireccionesPorUsuario($idUsuario) {
+        // Se obtienen las direcciones asociadas al usuario mediante la tabla direccionesusuarios
+        $stmt = $this->db->prepare("SELECT d.* 
+                                    FROM direcciones d 
+                                    JOIN direccionesusuarios du ON d.idDireccion = du.idDireccion 
+                                    WHERE du.idUsuario = ?");
+        $stmt->execute([$idUsuario]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 }
 ?>

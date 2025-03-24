@@ -23,7 +23,7 @@ class Middleware {
         }
     }
 
-    public static function redirigirSiAutenticado($destino = "/MICHICOLECCION") {
+    public static function redirigirSiAutenticado($destino = "/MICHICOLECCION/usuario") {
         self::iniciarSesion();
 
         if (isset($_SESSION['usuario_id'])) {
