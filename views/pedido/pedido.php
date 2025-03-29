@@ -50,7 +50,7 @@ ob_start();
                 </table>
 
                 <div class="text-center mt-4">
-                    <a href="index.php" class="btn btn-primary">Volver al Inicio</a>
+                    <a href="/MICHICOLECCION/usuario" class="btn btn-primary">Volver</a>
                 </div>
             </div>
         </div>

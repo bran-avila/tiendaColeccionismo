@@ -210,5 +210,17 @@ class Pedido {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
    }
 
+    // Método para obtener todos los estados de venta desde la tabla estatusVenta
+    public function obtenerEstatusVenta() {
+        $stmt = $this->db->query("SELECT * FROM estatusventa ORDER BY idEstatusventa");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Método para actualizar el estado del pedido (campo idEstatusVenta)
+    public function actualizarEstado($idPedido, $idEstatusVenta) {
+        $stmt = $this->db->prepare("UPDATE pedidos SET idEstatusVenta = ? WHERE idPedido = ?");
+        return $stmt->execute([$idEstatusVenta, $idPedido]);
+    }
+
 }
 ?>

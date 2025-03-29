@@ -17,7 +17,16 @@ ob_start();
                 <h4>Detalles del Pedido</h4>
                 <p><strong>ID Pedido:</strong> <?php echo $pedido['idPedido']; ?></p>
                 <p><strong>Fecha:</strong> <?php echo $pedido['fecha']; ?></p>
-                <p><strong>Estado:</strong> <?php echo $pedido['estado']; ?></p>
+                <div class="mb-3">
+                    <label for="estadoVenta" class="form-label fw-bold">Estado:</label>
+                    <select id="estadoVenta" data-id="<?php echo $pedido['idPedido']; ?>" class="form-select">
+                        <?php foreach($estatusVenta as $estatus): ?>
+                            <option value="<?php echo $estatus['idEstatusventa']; ?>" <?php echo ($pedido['estado'] == $estatus['estado']) ? 'selected' : ''; ?>>
+                                <?php echo $estatus['estado']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
                 <p><strong>Método de Pago:</strong> <?php echo $pedido['payment_method']; ?> (<?php echo $pedido['status']; ?>)</p>
                 <p><strong>Total Bruto:</strong> $<?php echo number_format($pedido['totalBruto'], 2); ?></p>
                 <p><strong>Total Neto:</strong> $<?php echo number_format($pedido['totalNeto'], 2); ?></p>
@@ -51,7 +60,7 @@ ob_start();
                 </table>
 
                 <div class="text-center mt-4">
-                    <a href="/MICHICOLECCION/admin/pedidos" class="btn btn-primary">Volver al Inicio admin</a>
+                    <a href="/MICHICOLECCION/admin/pedidos" class="btn btn-primary">Volver a la lista pedidos</a>
                 </div>
             </div>
         </div>

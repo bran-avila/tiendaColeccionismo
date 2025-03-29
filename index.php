@@ -289,6 +289,13 @@ $router->get('SobreNosotros', function() {
 });
 
 
+$router->post('admin/orden/actualizarEstado', function(){
+    Middleware::verificarAutenticacion();  
+    Middleware::verificarRol('administrador'); 
+    $pedido = new pedidoController();
+    $pedido->updateEstado();
+});
+
 // Ruta 404 personalizada
 $router->setNotFound(function() {
     header("HTTP/1.0 404 Not Found");

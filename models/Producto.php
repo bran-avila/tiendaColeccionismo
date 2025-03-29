@@ -186,7 +186,7 @@ class Producto {
             
             // Si se proporciona un idCategoria, agregamos el filtro
             if ($idCategoria !== null) {
-                $sql .= " WHERE p.idCategoria = :idCategoria";
+                $sql .= " WHERE p.idCategoria = :idCategoria and p.cantidad > 0";
             }
     
             $stmt = $this->db->prepare($sql);

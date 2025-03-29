@@ -40,6 +40,7 @@ class PedidoController{
         }
         try{
             $pedido = $this->pedidoModel->obtenerPedidoPorId($id);
+            $estatusVenta = $this->pedidoModel->obtenerEstatusVenta();
             $detalles = $this->pedidoModel->obtenerDetallesPedido($id);
 
             if(!in_array("administrador", $_SESSION['usuario_roles'])){
@@ -54,6 +55,21 @@ class PedidoController{
 
     }
 
+    public function updateEstado() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Se asume que el administrador ya pasó por el middleware de autenticación y rol
+            $idPedido = $_POST['idPedido'];
+            $idEstatusVenta = $_POST['idEstatusVenta'];
+    
+            $resultado = $this->pedidoModel->actualizarEstado($idPedido, $idEstatusVenta);
+    
+            if ($resultado) {
+                echo json_encode(['success' => true, 'message' => 'Estado actualizado correctamente']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Error al actualizar el estado']);
+            }
+        }
+    }
    
 }
 ?>

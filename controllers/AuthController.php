@@ -22,7 +22,7 @@ class AuthController {
             $password = $_POST['Password'];
         
             if ($this->usuarioController->login($correo, $password)) {
-                header("Location: /MICHICOLECCION/admin"); // Redirige a un panel de control
+                header("Location: /MICHICOLECCION/usuario"); // Redirige a un panel de control
                 exit();
             } else {
                 $error="Error autenticacion";
